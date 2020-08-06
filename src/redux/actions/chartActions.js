@@ -44,10 +44,11 @@ export function getEmbeddedReport(report) {
 export function renderVisualsResize() {
   return function (dispatch, getState) {
     var storeData = getState();
+    let columns = window.innerWidth > 1000 ? 3 : 2;
+    dispatch(updateLayoutColumnsState(columns));
     renderVisuals(storeData.charts.LayoutShowcaseState);
   };
 }
-
 export function updateActivePagesVisuals(visuals) {
   return { type: types.UPDATE_ACTIVE_PAGE_VISUALS, visuals };
 }
